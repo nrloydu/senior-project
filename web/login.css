@@ -1,8 +1,11 @@
 html {
+    /* Fallback color, do not remove */
+    background-color: #87bdd8e8;
     background-image: linear-gradient(to bottom right, #ffeead, #ff6f69, #87bdd8e8);
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
+    font-family: "SegoeUIRegular", Arial, sans-serif;
 }
 
 body{
@@ -28,14 +31,39 @@ div {
     min-width: 100px;
     overflow: hidden;
     background: #87bdd8e8;
+    border: 4px transparent #dadada;
+    border-radius: 5px;
+    outline: none;
+    border-color: #e0e9f0;
+    box-shadow: 0 0 20px #e0e9f0;
+
 }
 
-label, button {
+input[type=text], input[type=password] {
+    border-radius: 3px;
+    border: 0px;
+}
+
+input[type=text], input[type=password]:focus {
+    border: 10px #69c3f0e8;
+}
+
+label {
     display: inline-block;
     padding: 10px;
 }
 
-#loginButtons {
+button {
+    display: inline-block;
+    padding: 10px;
+    background-color: #ffeead;
+    background-image: linear-gradient(#fd918e, #ff6f69);
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+}
+
+#loginPageButtons {
     padding-top: 10px;
     padding-bottom: 10px;
 }
