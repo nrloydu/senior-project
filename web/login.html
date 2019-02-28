@@ -12,7 +12,7 @@
 
 <body>
     <div id="title">
-        <h1>Welcome to: TO BE NAMED</h1><br />
+        <h1>Welcome to: TO BE NAMED</h1><br/>
     </div>
     <div id="userInfoContainer">
         <p>Please enter your login below to get started.</p>
@@ -24,9 +24,9 @@
             <input type="password" name="secret" size="20" maxlength="20" minlength="10" required>
             <div id="loginPageButtons">
                 <!-- Change to input type submit? Makes organizing CSS nicer-->
-                <button onclick="runCode()" id="loginButton">Login</button> <br>
-                <i>New user?</i> 
-                <button id="signUpButton">Sign Up</button>
+                <input type="submit" onclick="runCode()" id="loginButton" value="Login"><br>
+                <label for="signUpButton"><i>New User?</i></label> 
+                <input type="submit" id="signUpButton" value="Sign Up"><br>
             </div>
         </form>
     </div>
