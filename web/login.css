@@ -22,11 +22,10 @@ div {
 
 #title {
     width: 100%;
-    background-color: #104aa8;
+    /* background-color: #104aa8;
     background-image: linear-gradient(rgb(0, 118, 197), #0f449b); 
     background-repeat: no-repeat;
-    padding-bottom: 10px;
-    text-align: left;
+    padding-bottom: 10px; */ 
     color: #f4f6f9;
 }
 
@@ -39,15 +38,13 @@ div {
     overflow: hidden;
     background:white;
     border-radius: 5px;
-    outline: none;
     border-color: #5c5c5c;
     box-shadow: 0 0 20px #5c5c5c;
-
 }
 
-#username, #password {
-    border-radius: 1px;
-    border-color: gray;
+input[type=text], input[type=password] {
+    box-shadow: 0 0 1px #5c5c5c;
+    border: transparent;
 }
 
 input[type=text], input[type=password]:focus {
@@ -62,9 +59,9 @@ label {
 button, #loginButton, #signUpButton {
     display: inline-block;
     padding: 10px;
-    background-color: #ffeead;
-    background-image: linear-gradient(#fd918e, #ff6f69);
-    border-radius: 20px;
+    background: green;
+    background-image: linear-gradient(rgb(38, 199, 38), rgb(4, 148, 4));
+    border-radius: 10px;
     font-weight: bold;
     color: white;
 }
