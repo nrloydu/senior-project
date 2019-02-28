@@ -9,17 +9,20 @@ html {
 }
 
 #container {
-    width: 100%;
+    margin: 10px;
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;             
-    justify-content: space-between;
+    flex-wrap: nowrap;   
+    justify-content: space-between;          
 }
 
-#pollContainer, #groupContainer, #settingContainer {
+#pollContainer, #groupContainer, #settingsContainer {
     width:100px;
     height: 100px;
     background: white;
+    border-radius: 10px;
+    border-color: #5c5c5c;
+    box-shadow: 0 0 10px #5c5c5c;
 }
 
 #welcome {
