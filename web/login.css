@@ -22,6 +22,7 @@ div {
 
 #title {
     width: 100%;
+    /* Do we want to make a header with a different background color?*/
     /* background-color: #104aa8;
     background-image: linear-gradient(rgb(0, 118, 197), #0f449b); 
     background-repeat: no-repeat;

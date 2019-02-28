@@ -1,0 +1,20 @@
+html {
+    /* Fallback color, do not remove */
+    background-color: #104aa8;
+    background-image: linear-gradient(to bottom right, rgb(0, 195, 255), #104aa8); 
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    font-family: "SegoeUIRegular", Arial, sans-serif;
+}
+
+body{
+    height: 100%;
+    margin: 0%;
+    text-align: left;
+}
+
+#welcome {
+    width: 100%;
+    color: #f4f6f9;
+}
