@@ -1,4 +1,4 @@
 function runCode() 
 {
-    alert("Log-in failed")
+    self.location = "home.html";
 }

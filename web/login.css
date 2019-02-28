@@ -1,0 +1,10 @@
+#userInfo {
+    display: block;
+    text-align: center;
+    line-height: 150%;
+    font-size: .85em;
+}
+
+p, h1 {
+    text-align: center;
+}
