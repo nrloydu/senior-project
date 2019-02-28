@@ -9,7 +9,7 @@ html {
 }
 
 #container {
-    margin: 10px;
+    margin: auto;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;   
@@ -17,8 +17,11 @@ html {
 }
 
 #pollContainer, #groupContainer, #settingsContainer {
-    width:100px;
-    height: 100px;
+    width: 325px;
+    height: 325px; 
+    /* Change to be fixed to added elements 
+    width: 30%;
+    height: 70%; */
     background: white;
     border-radius: 10px;
     border-color: #5c5c5c;
