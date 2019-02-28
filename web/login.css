@@ -1,10 +1,20 @@
-#userInfo {
+div {
     display: block;
     text-align: center;
-    line-height: 150%;
-    font-size: .85em;
 }
 
-p, h1 {
-    text-align: center;
+#userInfoContainer {
+    line-height: 150%;
+    font-size: .85em;
+    background: #b7d7e8;
+}
+
+label {
+    display: inline-block;
+    padding-top: 10px;
+}
+
+#loginButtons {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
