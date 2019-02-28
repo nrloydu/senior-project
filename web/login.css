@@ -1,17 +1,38 @@
+html {
+    background-image: linear-gradient(to bottom right, #ffeead, #ff6f69, #87bdd8e8);
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    height: 100%;
+    margin: 0%;
+    text-align: center;
+}
+
 div {
     display: block;
-    text-align: center;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#title {
+    width: 100%;
 }
 
 #userInfoContainer {
     line-height: 150%;
     font-size: .85em;
-    background: #b7d7e8;
+    width: 25%;
+    min-width: 100px;
+    overflow: hidden;
+    background: #87bdd8e8;
 }
 
-label {
+label, button {
     display: inline-block;
-    padding-top: 10px;
+    padding: 10px;
 }
 
 #loginButtons {

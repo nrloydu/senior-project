@@ -12,20 +12,21 @@
 
 <body>
     <div id="title">
-    <h1>Welcome to: TO BE NAMED</h1>
-    <p>Please enter your login below to get started.</p>
+        <h1>Welcome to: TO BE NAMED</h1><br />
     </div>
     <div id="userInfoContainer">
+        <p>Please enter your login below to get started.</p>
         <form id="userInfoForm">
             <label for="username">Username:</label>
             <input type="text" id="username" required><br>
 
-            <label for="password">Password</label>
+            <label for="password">Password:</label>
             <input type="password" name="secret" size="20" maxlength="20" minlength="10" required>
             <div id="loginButtons">
                 <!-- Change to input type submit?-->
-                <button onclick="runCode()" id="userInfo">Log in</button>
-                <!-- New user? Sign up!-->
+                <button onclick="runCode()" id="userInfo">Login</button> <br>
+                <i>New user?</i> 
+                <button id="signUpButton">Sign Up</button>
             </div>
         </form>
     </div>
