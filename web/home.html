@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!--See list - Active polls & List of Active Groups-->
+<!-- Active polls & List of Active Groups-->
 <html>
 
 <head>
@@ -8,26 +8,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>HOME PAGE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="script.js"></script>
+    <link href="home.css" rel="stylesheet">
 </head>
 
 <body>
-
-    <section>
-        <h1> Welcome back!</h1>
-
-        <ul>
-            <li><a href="polls.html">View Active Polls</a></li>
-            <li><a href="groups.html">View Active Groups</a></li>
-            <li><a href="adminSettings.html">User Preferences</a></li>
-        </ul>
-
-
-        <form action="newPoll.html">
-            <button id="userSettings">New Poll</button></li>
-        </form>
-    </section>
-
+    <div id="welcome">
+        <h1 id=> Welcome back!</h1>
+    </div>
+    <div id="container">
+        <div id="pollContainer"><a href="polls.html"> Active Polls</a>
+            <form action="newPoll.html">
+                <button id="userSettings">New Poll</button></li>
+            </form>
+        </div>
+        <div id="groupContainer"><a href="groups.html"> Active Groups</a></div>
+        <div id="settingsContainer"> <a href="adminSettings.html">User Preferences</a></div> <br>
+    </div>
 </body>
 
 </html>

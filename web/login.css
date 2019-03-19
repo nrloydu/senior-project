@@ -1,7 +1,7 @@
 html {
     /* Fallback color, do not remove */
-    background-color: #87bdd8e8;
-    background-image: linear-gradient(to bottom right, #ffeead, #ff6f69, #87bdd8e8);
+    background-color: #104aa8;
+    background-image: linear-gradient(to bottom right, rgb(0, 195, 255), #104aa8); 
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
@@ -22,26 +22,30 @@ div {
 
 #title {
     width: 100%;
+    /* Do we want to make a header with a different background color?*/
+    /* background-color: #104aa8;
+    background-image: linear-gradient(rgb(0, 118, 197), #0f449b); 
+    background-repeat: no-repeat;
+    padding-bottom: 10px; */ 
+    color: #f4f6f9;
 }
 
 #userInfoContainer {
+    margin-top: 50 px;
     line-height: 150%;
     font-size: .85em;
     width: 25%;
     min-width: 100px;
     overflow: hidden;
-    background: #87bdd8e8;
-    border: 4px transparent #dadada;
+    background:white;
     border-radius: 5px;
-    outline: none;
-    border-color: #e0e9f0;
-    box-shadow: 0 0 20px #e0e9f0;
-
+    border-color: #5c5c5c;
+    box-shadow: 0 0 20px #5c5c5c;
 }
 
 input[type=text], input[type=password] {
-    border-radius: 3px;
-    border: 0px;
+    box-shadow: 0 0 1px #5c5c5c;
+    border: transparent;
 }
 
 input[type=text], input[type=password]:focus {
@@ -56,9 +60,9 @@ label {
 button, #loginButton, #signUpButton {
     display: inline-block;
     padding: 10px;
-    background-color: #ffeead;
-    background-image: linear-gradient(#fd918e, #ff6f69);
-    border-radius: 20px;
+    background: green;
+    background-image: linear-gradient(rgb(38, 199, 38), rgb(4, 148, 4));
+    border-radius: 10px;
     font-weight: bold;
     color: white;
 }

@@ -1,0 +1,34 @@
+html {
+    /* Fallback color, do not remove */
+    background-color: #104aa8;
+    background-image: linear-gradient(to bottom right, rgb(0, 195, 255), #104aa8); 
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    font-family: "SegoeUIRegular", Arial, sans-serif;
+}
+
+#container {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;   
+    justify-content: space-between;          
+}
+
+#pollContainer, #groupContainer, #settingsContainer {
+    width: 325px;
+    height: 325px; 
+    /* Change to be fixed to added elements 
+    width: 30%;
+    height: 70%; */
+    background: white;
+    border-radius: 10px;
+    border-color: #5c5c5c;
+    box-shadow: 0 0 10px #5c5c5c;
+}
+
+#welcome {
+    width: 100%;
+    color: #f4f6f9;
+}
