@@ -3,5 +3,8 @@
 		{
 			"path": "server"
 		}
-	]
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "automatic"
+	}
 }
