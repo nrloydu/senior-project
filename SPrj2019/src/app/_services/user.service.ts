@@ -8,22 +8,22 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<User[]>(`${config.apiUrl}/users`);
+        return this.http.get<User[]>(`/users`);
     }
 
     getById(id: number) {
-        return this.http.get(`${config.apiUrl}/users/${id}`);
+        return this.http.get(`/users/${id}`);
     }
 
     register(user: User) {
-        return this.http.post(`${config.apiUrl}/users/register`, user);
+        return this.http.post(`/users/register`, user);
     }
 
     update(user: User) {
-        return this.http.put(`${config.apiUrl}/users/${user.id}`, user);
+        return this.http.put(`/users/${user.id}`, user);
     }
 
     delete(id: number) {
-        return this.http.delete(`${config.apiUrl}/users/${id}`);
+        return this.http.delete(`/users/${id}`);
     }
 }
