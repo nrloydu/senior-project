@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
 import { ApiService } from './_services/api.service';
+import { NewPollComponent } from './new-poll/new-poll.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ApiService } from './_services/api.service';
       AlertComponent,
       HomeComponent,
       LoginComponent,
-      RegisterComponent
+      RegisterComponent,
+      NewPollComponent
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

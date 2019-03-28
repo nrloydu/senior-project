@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Routes } from '@angular/router';
 
 import { AuthenticationService } from './_services';
 import { User } from './_models';
+import { NewPollComponent } from './new-poll/new-poll.component';
 
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
@@ -19,4 +20,13 @@ export class AppComponent {
         this.authenticationService.logout();
         this.router.navigate(['/login']);
     }
+
 }
+
+export const routerCongif: Routes = [
+    {
+        path: "new-poll",
+        component: NewPollComponent
+    }
+
+];
