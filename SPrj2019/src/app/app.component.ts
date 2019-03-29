@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, Routes } from '@angular/router';
 
+
 import { AuthenticationService } from './_services';
 import { User } from './_models';
 import { NewPollComponent } from './new-poll/new-poll.component';
@@ -23,10 +24,3 @@ export class AppComponent {
 
 }
 
-export const routerCongif: Routes = [
-    {
-        path: "new-poll",
-        component: NewPollComponent
-    }
-
-];

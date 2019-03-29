@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {RouterModule, Routes} from "@angular/router";
+
 
 import { fakeBackendProvider } from './_helpers';
 
@@ -17,11 +19,15 @@ import { RegisterComponent } from './register/register.component';
 
 import { ApiService } from './_services/api.service';
 import { NewPollComponent } from './new-poll/new-poll.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-
+const routeConfig: Routes = [
+    { path: 'new-poll', component: NewPollComponent, data: {title: 'Create a New Poll'}}
+];
 @NgModule({
   imports: [
       BrowserModule,
+      RouterModule.forRoot(routeConfig),
       ReactiveFormsModule,
       HttpClientModule,
       routing
@@ -46,3 +52,5 @@ import { NewPollComponent } from './new-poll/new-poll.component';
 })
 
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule);
