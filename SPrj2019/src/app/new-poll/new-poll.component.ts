@@ -25,4 +25,8 @@ export class NewPollComponent implements OnInit {
   ngOnInit() {
   }
 
+  addOption() {
+    
+  }
+
 }
