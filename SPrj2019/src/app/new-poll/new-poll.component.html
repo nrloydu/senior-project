@@ -1,5 +1,6 @@
 <h2>Create a new Poll</h2>
-<form [formGroup]="newPollForm" (ngSubmit)="onSubmit()">
+<section class="CreatePoll" *ngIf="pollForm">
+<form [formGroup]="newPollForm" (ngSubmit)="send()">
 
   <!-- Title -->
   <div class="form-group"> 
@@ -10,15 +11,11 @@
 
   <!-- list of options -->
   <div formArrayName="options">
-    <div *ngFor="let option of pollForm.controls.options.controls; let i=index">
-      <div>
-        <span *ngIf="pollForm.controls.options.controls.length > 1"
-          (click)="removeAddress(i)">
-        </span>
-      </div>
+    <div *ngFor="let option of pollForm.controls['options'].controls; let i=index">
       <div [formGroupName]="i">
-        <input type="checkbox" formControlName="defaultOption" class="options" id="optionBox"/>
-        <label for="defaultOption" contenteditable="true" id="optionBox" class="optionLabel">Edit Option 1...</label>
+        <input type="checkbox" formControlName="defaultOption" class="options" id="optionBox">
+        <input formControlName = "optionLabel" id="optionBox">
+        <a click="removeOption()" class="btn btn-link">Remove</a>
       </div>    
     </div>
   </div>
@@ -28,3 +25,4 @@
     <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
   </div>
 </form>
+</section>
