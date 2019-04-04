@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {RouterModule, Routes} from "@angular/router";
 
@@ -20,6 +20,9 @@ import { RegisterComponent } from './register/register.component';
 import { ApiService } from './_services/api.service';
 import { NewPollComponent } from './new-poll/new-poll.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { NewOptionComponent } from './new-option/new-option.component';
+
+
 
 const routeConfig: Routes = [
     { path: 'new-poll', component: NewPollComponent, data: {title: 'Create a New Poll'}}
@@ -38,7 +41,8 @@ const routeConfig: Routes = [
       HomeComponent,
       LoginComponent,
       RegisterComponent,
-      NewPollComponent
+      NewPollComponent,
+      NewOptionComponent
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

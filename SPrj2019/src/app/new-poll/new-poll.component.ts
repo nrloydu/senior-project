@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthenticationService } from '../_services';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 
@@ -23,10 +23,33 @@ export class NewPollComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.pollForm = this.formBuilder.group ({
+        title: ['', [Validators.required, Validators.minLength(5)]],
+        options: this.formBuilder.array([
+          this.initOption(),
+        ])
+    });
+  }
+
+  initOption() {
+    //initialize first option
+    return this.formBuilder.group({
+      choice: ['', Validators.required],
+    });
   }
 
   addOption() {
-    
+    // add option to the list
+    const control = <FormArray>this.pollForm.controls['options'];
+    control.push(this.initOption());
   }
+
+  removeOption(i: number){
+    //remove option from the list
+    const control = <FormArray>this.pollForm.controls['options'];
+    control.removeAt(i);
+  }
+
+  
 
 }
