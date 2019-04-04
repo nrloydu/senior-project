@@ -6,8 +6,7 @@ import { first } from 'rxjs/operators';
 
 
 @Component({
-  templateUrl: './new-poll.component.html',
-  styleUrls: ['./new-poll.component.css']
+  templateUrl: './new-poll.component.html'
 })
 export class NewPollComponent implements OnInit {
   pollForm: FormGroup;
