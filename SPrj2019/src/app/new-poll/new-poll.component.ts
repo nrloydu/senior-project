@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AuthenticationService } from '../_services';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 
@@ -13,40 +11,36 @@ export class NewPollComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  choice: 'Angular 7';
 
   constructor(
       private formBuilder: FormBuilder,
-      private route: ActivatedRoute,
-      private router: Router,
-      private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit() {
     this.pollForm = this.formBuilder.group ({
-        title: ['', [Validators.required, Validators.minLength(5)]],
-        options: this.formBuilder.array([
-          this.initOption(),
-        ])
-    });
+      options: this.formBuilder.array(
+        [this.initOption()]
+      )
+    })
   }
 
   initOption() {
-    //initialize first option
     return this.formBuilder.group({
-      choice: ['', Validators.required],
-    });
+      choice: ['Edit choice']
+    })
   }
 
   addOption() {
-    // add option to the list
-    const control = <FormArray>this.pollForm.controls['options'];
-    control.push(this.initOption());
+    (this.pollForm.controls['options'] as FormArray).push(this.initOption())
   }
 
-  removeOption(i: number){
-    //remove option from the list
-    const control = <FormArray>this.pollForm.controls['options'];
-    control.removeAt(i);
+  removeOption(){
+
+  }
+
+  send() {
+    console.log(this.pollForm.value);
   }
 
   
