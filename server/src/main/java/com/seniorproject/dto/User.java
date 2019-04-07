@@ -1,8 +1,12 @@
 package com.seniorproject.dto;
 
+import org.springframework.data.annotation.Id;
+
 public class User {
 
+    @Id
     private final long id;
+
     private final String name;
     private final String passwordHash;
 
