@@ -13,15 +13,20 @@
     <div *ngFor="let option of pollForm.controls['options'].controls; let i=index">
       <div [formGroupName]="i">
         <label for="AddOptions">Options: </label><br/>
+        <div id="target-id"></div>
+        <p><input formControlName = "optionLabel" id="optionBox"></p>
         <!-- When creating a new poll option, does it need checkboxes?
         Should checkboxes only appear on live polls, since you should only need 
         a check box to specify the option(s) you want? -->
-        <div id="target-id"></div>
-        <p><input type="text" id='optionBox'></p>
         <!-- <input type="checkbox" formControlName="defaultOption" class="options" id="optionBox"> -->
-        <!-- <input formControlName = "optionLabel" id="optionBox"><br/> -->
-        <!-- Add padding in css or html between text area and button-->
-        <button (click)="addOption()" class="btn btn-default">+ Add Option</button> 
+        <p><button (click)="addOption()" class="btn btn-default">+ Add Option</button></p>
+        <label>Expiration Date: </label>
+        <p><input type="text" id='expDateBox'></p>
+        <label>Add User or Group: </label>
+        <p><input type="text" id='userBox'></p>
+        <p><button (click)="addUser()" class="btn btn-default">+ Add User</button></p>
+        <label>Visibility Limit: </label>
+        <p><input type="text" placeholder="e.g. 72 hours" id='visBox'></p>
         <!-- <a click="addOption()" class="btn btn-default">+ Add Option</a> -->
       <!-- RemoveOption should only be seen when at least one option is added, not when creating the first option-->
        <!-- <a click="removeOption()" class="btn btn-link">Remove</a> --> 
