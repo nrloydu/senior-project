@@ -55,7 +55,7 @@ export class NewPollComponent implements OnInit {
   }
 
   removeUser(){
-    
+
   }
   send() {
     console.log(this.pollForm.value);

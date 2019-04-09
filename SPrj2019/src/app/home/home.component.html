@@ -1,10 +1,18 @@
-<h1>Welcome, {{currentUser.firstName}}!</h1>
-<p>You're logged into your polling application!</p>
-<p>Begin by creating a new poll or reviewing an active poll.</p>
-<h3>All registered users:</h3>
-<ul>
-    <li *ngFor="let user of users">
-        {{user.username}} ({{user.firstName}} {{user.lastName}})
-        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
-    </li>
-</ul>
+<h1 style="text-align:center">Welcome, {{currentUser.firstName}}!</h1>
+<p style="text-align:center">You're logged into your polling application!
+    <br/>Begin by creating a new poll or reviewing an active poll.</p>
+
+<div class="container">
+        <div style="float: left; width: 50%;">
+            <h3>Active Polls:</h3>
+        </div>
+        <div style="float: right; width: 50%;">
+            <h3>All registered users:</h3>
+                <ul>
+                    <li *ngFor="let user of users">
+                        {{user.username}} ({{user.firstName}} {{user.lastName}})
+                        - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
+                    </li>
+                </ul>
+        </div>
+</div>
