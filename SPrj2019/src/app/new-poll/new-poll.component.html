@@ -1,26 +1,36 @@
-<h2>Create a new Poll</h2>
+<h2>Create New Poll</h2>
 <section class="CreatePoll" *ngIf="pollForm">
 <form [formGroup]="pollForm" (ngSubmit)="send()">
 
   <!-- Title -->
   <div class="form-group"> 
-    <label for="title">Title</label>
-    <input type="text">
+    <label for="title">Poll Title: </label>
+    <p><input type="text"></p>
   </div>
 
   <!-- list of options -->
   <div formArrayName="options">
     <div *ngFor="let option of pollForm.controls['options'].controls; let i=index">
       <div [formGroupName]="i">
-        <input type="checkbox" formControlName="defaultOption" class="options" id="optionBox">
-        <input formControlName = "optionLabel" id="optionBox">
-        <a click="removeOption()" class="btn btn-link">Remove</a>
+        <label for="AddOptions">Options: </label><br/>
+        <!-- When creating a new poll option, does it need checkboxes?
+        Should checkboxes only appear on live polls, since you should only need 
+        a check box to specify the option(s) you want? -->
+        <div id="target-id"></div>
+        <p><input type="text" id='optionBox'></p>
+        <!-- <input type="checkbox" formControlName="defaultOption" class="options" id="optionBox"> -->
+        <!-- <input formControlName = "optionLabel" id="optionBox"><br/> -->
+        <!-- Add padding in css or html between text area and button-->
+        <button (click)="addOption()" class="btn btn-default">+ Add Option</button> 
+        <!-- <a click="addOption()" class="btn btn-default">+ Add Option</a> -->
+      <!-- RemoveOption should only be seen when at least one option is added, not when creating the first option-->
+       <!-- <a click="removeOption()" class="btn btn-link">Remove</a> --> 
+        <p></p>  
       </div>    
     </div>
   </div>
-  <a click="addOption()" class="btn btn-link">Add Option</a>
   <div class="options">
-    <button [disabled]="loading" class="btn btn-primary">Send</button>
+    <button [disabled]="loading" class="btn btn-primary">Submit</button>
     <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
   </div>
 </form>

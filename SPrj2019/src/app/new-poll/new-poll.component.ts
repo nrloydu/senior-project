@@ -12,10 +12,15 @@ export class NewPollComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   choice: 'Angular 7';
+  // Change this array type to new poll component
+  opArr: Array<string>;
 
   constructor(
       private formBuilder: FormBuilder,
-  ) { }
+  ) { 
+    this.opArr = [];
+    
+  }
 
   ngOnInit() {
     this.pollForm = this.formBuilder.group ({
@@ -32,7 +37,13 @@ export class NewPollComponent implements OnInit {
   }
 
   addOption() {
-    (this.pollForm.controls['options'] as FormArray).push(this.initOption())
+    //if (newOption){
+      var opValue = (<HTMLInputElement>document.getElementById("optionBox")).value;
+      this.opArr.push(opValue);
+      document.getElementById("target-id").innerText = opValue;
+   // }
+    // Add the new option to FormArray
+    //(this.pollForm.controls['options'] as FormArray).push(this.initOption())
   }
 
   removeOption(){
