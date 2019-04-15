@@ -1,8 +1,7 @@
-package com.seniorproject.repository;
+package com.seniorproject.server.repository;
 
-import java.util.List;
+import java.util.Optional;
 
-//needs the right maven dependency to import CrudRepository
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +12,6 @@ import com.seniorproject.dto.User;
 
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
+    public Optional<User> findById(String id);
     public User findByName(String name);
-    public List<User> findByEmail(String email);
 }

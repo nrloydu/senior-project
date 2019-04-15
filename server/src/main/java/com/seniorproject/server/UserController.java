@@ -1,17 +1,18 @@
 package com.seniorproject.server;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.seniorproject.dto.User;
-import com.seniorproject.repository.UserRepository;
+import com.seniorproject.server.repository.UserRepository;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 
 @RestController
 @RequestMapping("/users")
@@ -25,17 +26,32 @@ public class UserController {
     List<User> getUsers(){
         return repository.findAll();
     }
-/*
-    public User getUser(@RequestParam String username) {
-        //this will access the database, for now it just returns a made-up user with the given name
-        return new User(456, "Hello, " + username, "555");
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getUser/{userId}")
+    @ResponseBody
+    Optional<User> getUser(@PathVariable String userId) {
+        return repository.findById(userId);
     }
 
-    @RequestMapping("/allUsers")
-    public @ResponseBody Iterable<User> getAllUsers() {
-		// This returns a JSON or XML with the users
-		return userRepository.findAll();
+    @RequestMapping(method = RequestMethod.GET, value = "/getUserByName/{name}")
+    @ResponseBody
+    User getUserByName(@PathVariable String name) {
+        return repository.findByName(name);
     }
+
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    User add(@RequestBody User newUser) {
+        return repository.save(newUser);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/{userId}")
+    @ResponseBody
+    void delete(@PathVariable String userId) {
+        repository.deleteById(userId);
+    }
+
+/*
     
     @RequestMapping("/userByEmail")
     public User getUserByEmail(@RequestParam String email) {

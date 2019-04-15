@@ -9,14 +9,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class User {
 
     @Id
-    private final long id;
+    private long id;
 
     private final String name;
+    private final String email;
     private final String passwordHash;
 
-    public User(long id, String name, String passwordHash ) {
-        this.id = id;
+    public User(String name, String email, String passwordHash ) {
         this.name = name;
+        this.email = email;
         this.passwordHash = passwordHash;
     }
 
@@ -26,6 +27,10 @@ public class User {
 
     public String getName() {
         return name;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getPasswordHash() {
