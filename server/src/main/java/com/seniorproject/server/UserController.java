@@ -39,6 +39,12 @@ public class UserController {
         return repository.findByName(name);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/getUserByEmail/{email}")
+    @ResponseBody
+    User getUserByEmail(@PathVariable String email) {
+        return repository.findByEmail(email);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
     User add(@RequestBody User newUser) {
@@ -50,29 +56,4 @@ public class UserController {
     void delete(@PathVariable String userId) {
         repository.deleteById(userId);
     }
-
-/*
-    
-    @RequestMapping("/userByEmail")
-    public User getUserByEmail(@RequestParam String email) {
-        //this will access the database, for now it just returns a made-up user with the given name
-        return new User(456, "Hello, " + email, "555");
-    }
-
-    @RequestMapping("/userByGroup")
-    public User getUserByGroup(@RequestParam String groupName) {
-        //this will access the database, for now it just returns a made-up user with the given name
-        return new User(456, "Hello, " + groupName, "555");
-    }
-
-    @RequestMapping("/addUser")
-    public String addNewUser(@RequestParam long id, @RequestParam String username, @RequestParam String passwordHash) {
-        
-        //User n = new User(id, username, passwordHash);
-        //add the user to the DB
-
-        return "Saved";
-    }
-    
-*/
 }

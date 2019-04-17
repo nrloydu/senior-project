@@ -14,4 +14,5 @@ import com.seniorproject.dto.User;
 public interface UserRepository extends MongoRepository<User, String> {
     public Optional<User> findById(String id);
     public User findByName(String name);
+    public User findByEmail(String email);
 }
