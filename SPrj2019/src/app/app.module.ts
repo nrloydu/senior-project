@@ -22,12 +22,13 @@ import { NewPollComponent } from './new-poll/new-poll.component';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NewOptionComponent } from './new-option/new-option.component';
 import { HistoricalDataComponent } from './historical-data/historical-data.component';
-
+import { UsersComponent } from './users/users.component';
 
 
 const routeConfig: Routes = [
     { path: 'new-poll', component: NewPollComponent, data: {title: 'Create a New Poll'}},
-    { path: 'historical-data', component: HistoricalDataComponent, data: {title: 'View Historical Poll Data'}}
+    { path: 'historical-data', component: HistoricalDataComponent, data: {title: 'View Historical Poll Data'}},
+    { path: 'users', component: UsersComponent, data: {title: 'Manage Users'}}
 ];
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ const routeConfig: Routes = [
       RegisterComponent,
       NewPollComponent,
       NewOptionComponent,
-      HistoricalDataComponent
+      HistoricalDataComponent,
+      UsersComponent
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

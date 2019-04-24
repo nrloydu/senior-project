@@ -7,6 +7,7 @@ import { AuthenticationService } from './_services';
 import { User } from './_models';
 import { NewPollComponent } from './new-poll/new-poll.component';
 import { HistoricalDataComponent } from './historical-data/historical-data.component';
+import { UsersComponent } from './users/users.component';
 
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
 export class AppComponent {
