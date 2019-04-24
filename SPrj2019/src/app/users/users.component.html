@@ -1,4 +1,13 @@
 <h2>Manage Users</h2>
 <p>
   View users, manage groups, and invite new users!
-</p>
+</p><br/>
+<div>
+  <h4>Create New Group</h4>
+  <p><input type="text" placeholder="Enter valid email" id='emailInput'></p>
+  <p><button (click)="inviteUser()" class="btn btn-primary">Invite User</button></p><br/>
+</div>
+<div>
+  <h4>Modify Existing Group</h4>
+  <p><button (click)="removeUserFromGroup()" class="btn btn-default">Remove User</button></p>
+</div>
