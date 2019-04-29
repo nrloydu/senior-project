@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertService } from '../_services';
 
 @Component({
   selector: 'app-users',
@@ -11,7 +12,8 @@ export class UsersComponent implements OnInit {
   emailForm: FormGroup;
     submitted = false;
 
-    constructor(private formBuilder: FormBuilder) { }
+    constructor(private formBuilder: FormBuilder,
+        private alertService: AlertService) { }
 
     ngOnInit() {
         this.emailForm = this.formBuilder.group({
@@ -29,7 +31,7 @@ export class UsersComponent implements OnInit {
         if (this.emailForm.invalid) {
             return;
         }
-        // Change this to say email sent once sending emails is possible with backend
-        alert('Valid email!')
+        // SEND THE EMAIL WITH THE SERVER
+        this.alertService.success('Email sent!', true);
     }
 }
