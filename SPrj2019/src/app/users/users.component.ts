@@ -22,14 +22,14 @@ export class UsersComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.emailForm.controls; }
 
-    onSubmit() {
+    onInvite() {
         this.submitted = true;
 
-        // stop here if form is invalid
+        // stop here if email is invalid
         if (this.emailForm.invalid) {
             return;
         }
-
-        alert('Successful')
+        // Change this to say email sent once sending emails is possible with backend
+        alert('Valid email!')
     }
 }

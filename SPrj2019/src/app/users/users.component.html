@@ -5,7 +5,7 @@
 <div>
   <h4>Create New Group</h4><br/>
   <h4>Invite New User</h4><br/>
-  <form [formGroup]="emailForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="emailForm" (ngSubmit)="onInvite()">
     <div class="form-group">
       <input type="text" placeholder="Enter valid email" formControlName="email" class="form-control"
         [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
