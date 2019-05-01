@@ -47,7 +47,7 @@ const routeConfig: Routes = [
       NewPollComponent,
       NewOptionComponent,
       HistoricalDataComponent,
-      UsersComponent
+      UsersComponent,
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

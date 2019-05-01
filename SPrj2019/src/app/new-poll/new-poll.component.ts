@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 
@@ -20,22 +20,22 @@ export class NewPollComponent implements OnInit {
 
   ngOnInit() {
     this.pollForm = this.formBuilder.group ({
-      pollTitle: '',
+      pollTitle: ['', Validators.required],
       options: this.formBuilder.array(
         [this.initOption()]
       )
     });
   }
 
-  onSubmit(form: FormGoup) {
+  onSubmit(form: FormGroup) {
     console.log('Valid?', form.valid);
     console.log('Title', form.value.pollTitle);
   }
 
   initOption() {
     return this.formBuilder.group({
-      description: ''
-    })
+      name: ''
+    });
   }
 
   addOption(): void {
@@ -61,11 +61,6 @@ export class NewPollComponent implements OnInit {
 
   removeUser(){
 
-  }
-  send() {
-    console.log(this.pollForm.value);
-  }
-
-  
+  } 
 
 }
