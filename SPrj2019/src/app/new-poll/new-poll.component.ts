@@ -52,7 +52,8 @@ export class NewPollComponent implements OnInit {
   }
 
   removeOption(){
-
+    this.options = this.pollForm.get('options') as FormArray;
+    this.options.removeAt(this.options.length - 1);
   }
 
   addUser() {
