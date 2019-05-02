@@ -1,7 +1,15 @@
 <h2>Manage Users</h2>
 <p>
   View users, manage groups, and invite new users!
-</p><br />
+</p><br/>
+<div>
+  <h4>All registered users:</h4>
+  <ul>
+    <li *ngFor="let user of users">
+      {{user.username}} ({{user.firstName}} {{user.lastName}})
+    </li>
+  </ul>
+</div>
 <div>
   <h4>Create New Group</h4><br/>
   <h4>Invite New User</h4><br/>
