@@ -5,16 +5,16 @@
     <!-- Title -->
     <div class="form-group">
       <label for="title">Poll Title: </label>
-      <p><input formControlName="name" type="text"></p>
+      <p><input formControlName="pollTitle" type="text"></p>
     </div>
 
     <!-- list of options -->
     <div formArrayName="options">
         <label for="AddOptions">Options: </label><br/>
-      <div *ngFor="let option of pollForm.controls['options'].controls; let i=index">
+      <div *ngFor="let option of pollForm.get('options').controls; let i=index">
         <div [formGroupName]="i">
           <div id="target-id"></div>
-          <p><input formControlName="optionLabel" id="optionBox"></p>
+          <p><input formControlName="label" id="optionBox"></p>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
     <div>
       <p><button (click)="addOption()" class="btn btn-default">+ Add Option</button></p>
       <label>Expiration Date: </label>
-      <p><input type="text" id='expDateBox'></p>
+      <p><input type="datetime-local" id='expDateBox'></p>
       <label>Add User or Group: </label>
       <p><input type="text" id='userBox'></p>
       <p><button (click)="addUser()" class="btn btn-default">+ Add User</button></p>

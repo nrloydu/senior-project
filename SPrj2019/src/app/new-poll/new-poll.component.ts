@@ -34,7 +34,7 @@ export class NewPollComponent implements OnInit {
 
   initOption() {
     return this.formBuilder.group({
-      name: ''
+      label: ''
     });
   }
 
