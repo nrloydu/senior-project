@@ -10,9 +10,9 @@
 
     <!-- list of options -->
     <div formArrayName="options">
+        <label for="AddOptions">Options: </label><br/>
       <div *ngFor="let option of pollForm.controls['options'].controls; let i=index">
         <div [formGroupName]="i">
-          <label for="AddOptions">Options: </label><br />
           <div id="target-id"></div>
           <p><input formControlName="optionLabel" id="optionBox"></p>
         </div>
