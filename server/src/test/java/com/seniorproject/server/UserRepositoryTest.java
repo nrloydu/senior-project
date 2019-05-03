@@ -23,6 +23,7 @@ import java.util.List;
 @SpringBootTest
 public class UserRepositoryTest {
 
+    //runs on production database, this should be changed
     @Autowired
     private UserRepository repository;
 
