@@ -1,42 +1,47 @@
 <h2>Create New Poll</h2>
 <section class="CreatePoll" *ngIf="pollForm">
-<form [formGroup]="pollForm" (ngSubmit)="send()">
+  <form [formGroup]="pollForm" (ngSubmit)="onSubmit(myForm)">
 
-  <!-- Title -->
-  <div class="form-group"> 
-    <label for="title">Poll Title: </label>
-    <p><input type="text"></p>
-  </div>
+    <!-- Title -->
+    <div class="form-group">
+      <label for="title">Poll Title: </label>
+      <p><input formControlName="pollTitle" type="text"></p>
+    </div>
 
-  <!-- list of options -->
-  <div formArrayName="options">
-    <div *ngFor="let option of pollForm.controls['options'].controls; let i=index">
-      <div [formGroupName]="i">
+    <!-- list of options -->
+    <div formArrayName="options">
         <label for="AddOptions">Options: </label><br/>
-        <div id="target-id"></div>
-        <p><input formControlName = "optionLabel" id="optionBox"></p>
-        <!-- When creating a new poll option, does it need checkboxes?
+      <div *ngFor="let option of pollForm.get('options').controls; let i=index">
+        <div [formGroupName]="i">
+          <div id="target-id"></div>
+          <p><input formControlName="label" id="optionBox"></p>
+        </div>
+      </div>
+    </div>
+    <!-- When creating a new poll option, does it need checkboxes?
         Should checkboxes only appear on live polls, since you should only need 
         a check box to specify the option(s) you want? -->
-        <!-- <input type="checkbox" formControlName="defaultOption" class="options" id="optionBox"> -->
-        <p><button (click)="addOption()" class="btn btn-default">+ Add Option</button></p>
-        <label>Expiration Date: </label>
-        <p><input type="text" id='expDateBox'></p>
-        <label>Add User or Group: </label>
-        <p><input type="text" id='userBox'></p>
-        <p><button (click)="addUser()" class="btn btn-default">+ Add User</button></p>
-        <label>Visibility Limit: </label>
-        <p><input type="text" placeholder="e.g. 72 hours" id='visBox'></p>
-        <!-- <a click="addOption()" class="btn btn-default">+ Add Option</a> -->
-      <!-- RemoveOption should only be seen when at least one option is added, not when creating the first option-->
-       <!-- <a click="removeOption()" class="btn btn-link">Remove</a> --> 
-        <p></p>  
-      </div>    
+    <!-- <input type="checkbox" formControlName="defaultOption" class="options" id="optionBox"> -->
+    <div>
+      <p><button (click)="addOption()" class="btn btn-default">+ Add Option</button></p>
+      <p><button (click)="removeOption()" class="btn btn-default">- Remove Option</button></p>
+      <label>Expiration Date: </label>
+      <p><input type="datetime-local" id='expDateBox'></p>
+      <label>Add User or Group: </label>
+      <p><input type="text" id='userBox'></p>
+      <p><button (click)="addUser()" class="btn btn-default">+ Add User</button></p>
+      <label>Visibility Limit: </label>
+      <p><input type="text" placeholder="e.g. 72 hours" id='visBox'></p>
     </div>
-  </div>
-  <div class="options">
-    <button [disabled]="loading" class="btn btn-primary">Submit</button>
-    <img *ngIf="loading" class="pl-3" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-  </div>
-</form>
+    <!-- <a click="addOption()" class="btn btn-default">+ Add Option</a> -->
+    <!-- RemoveOption should only be seen when at least one option is added, not when creating the first option-->
+    <!-- <a click="removeOption()" class="btn btn-link">Remove</a> -->
+    <p></p>
+
+    <div class="options">
+      <button [disabled]="loading" type="submit" class="btn btn-primary">Submit</button>
+      <img *ngIf="loading" class="pl-3"
+        src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    </div>
+  </form>
 </section>

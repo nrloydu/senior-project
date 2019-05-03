@@ -6,6 +6,7 @@ import {RouterModule, Routes} from "@angular/router";
 
 
 import { fakeBackendProvider } from './_helpers';
+import { AppService } from './app.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,11 +48,12 @@ const routeConfig: Routes = [
       NewPollComponent,
       NewOptionComponent,
       HistoricalDataComponent,
-      UsersComponent
+      UsersComponent,
   ],
   providers: [
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+      AppService,
 
       // provider used to create fake backend
       fakeBackendProvider,
