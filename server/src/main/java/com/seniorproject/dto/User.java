@@ -15,14 +15,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
-    private String name;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String passwordHash;
+    private String password;
+    private String token;
 
-    public User(String name, String email, String passwordHash ) {
-        this.name = name;
+    public User(String firstName, String lastName, String email, String password, String token ) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.passwordHash = passwordHash;
+        this.password = password;
+        this.token = token;
     }
 
     public String getId() {
@@ -33,12 +37,20 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String name) {
+        this.firstName = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+    
+    public void setLastName(String name) {
+        this.lastName = name;
     }
 
     public String getEmail() {
@@ -50,10 +62,18 @@ public class User {
     }
 
     public String getPasswordHash() {
-        return passwordHash;
+        return password;
     }
 
     public void setPasswordHash(String passwordHash) {
-        this.passwordHash = passwordHash;
+        this.password = passwordHash;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
