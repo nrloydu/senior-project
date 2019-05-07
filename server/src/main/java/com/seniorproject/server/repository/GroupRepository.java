@@ -11,6 +11,6 @@ import com.seniorproject.dto.Group;
 @Repository
 public interface GroupRepository extends MongoRepository<Group, String> {
     public Optional<Group> findById(String groupId);
-    public Group findByName(String groupName);
-    public List<Group> findByUserId(String userId);
+    public Group findByGroupName(String groupName);
+    //public List<Group> findByUserId(String userId);
 }

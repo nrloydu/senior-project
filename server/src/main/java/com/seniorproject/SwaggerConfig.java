@@ -1,4 +1,4 @@
-package com.seniorproject;
+/*package com.seniorproject;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import com.google.common.base.Predicate;
@@ -38,4 +38,4 @@ private Predicate<String> paths() {
     PathSelectors.regex("/*.*"),
     Predicates.not(PathSelectors.regex("/error.*")));
     }
-}
+}*/

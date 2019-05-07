@@ -39,7 +39,7 @@ public class UserRepositoryTest {
 
     @Test
     public void testFetchData(){
-        User userA = repository.findByName("bob");
+        User userA = repository.findByFirstName("bob");
         assertNotNull(userA);
         Optional<User> userB = repository.findById("1");
         assertNotNull(userB);
