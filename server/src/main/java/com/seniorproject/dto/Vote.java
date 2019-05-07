@@ -1,34 +1,45 @@
 package com.seniorproject.dto;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+
+@Document(collection = "groups")
+@TypeAlias("group")
 public class Vote {
 
-    private final long id;
-    private final long userId;
-    private final long pollId;
-    private final long pollOptionId;
-    private final Boolean hasVoted;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
+    private String userId;
+    private String pollId;
+    private String pollOptionId;
+    private Boolean hasVoted;
 
-    public Vote(long id, long userId, long pollId, long pollOptionId, Boolean hasVoted) {
-        this.id = id;
+    
+    public Vote(String userId, String pollId, Boolean hasVoted) {
         this.userId = userId;
         this.pollId = pollId;
-        this.pollOptionId = pollOptionId;
-        this.hasVoted = hasVoted;
+        this.hasVoted = false;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public long getPollId() {
+    public String getPollId() {
         return pollId;
     }
 
-    public long getPollOptionId() {
+    public String getPollOptionId() {
         return pollOptionId;
     }
 
