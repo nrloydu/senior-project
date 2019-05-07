@@ -20,6 +20,7 @@ public class User {
 
     private String firstName;
     private String lastName;
+    private String fullName;
     private String email;
     private String password;
     private String token;
@@ -29,6 +30,7 @@ public class User {
     public User(String firstName, String lastName, String email, String password, String token ) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.fullName = firstName + " " + lastName;
         this.email = email;
         this.password = password;
         this.token = token;
@@ -57,6 +59,14 @@ public class User {
     
     public void setLastName(String name) {
         this.lastName = name;
+    }
+
+    public void setFullname(String name) {
+        this.fullName = name;
+    }
+
+    public String getFullname() {
+        return fullName;
     }
 
     public String getEmail() {
