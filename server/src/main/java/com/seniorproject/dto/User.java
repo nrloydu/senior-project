@@ -21,13 +21,15 @@ public class User {
     private String firstName;
     private String lastName;
     private String fullName;
+    private String username;
     private String email;
     private String password;
     private String token;
     private List<String> groupList;
 
 
-    public User(String firstName, String lastName, String email, String password, String token ) {
+    public User(String username, String firstName, String lastName, String email, String password, String token ) {
+        this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
         this.fullName = firstName + " " + lastName;
@@ -43,6 +45,14 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getFirstName() {

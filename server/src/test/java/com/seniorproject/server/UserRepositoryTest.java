@@ -29,8 +29,8 @@ public class UserRepositoryTest {
 
     @Before
     public void setUp() throws Exception {
-        User user1 = new User("bob", "johnson", "bob@gmail.com", "passwordbob", "bobtoken");
-        User user2 = new User("jan", "stevenson", "jsteven@gmail.com", "passwordjan", "jantoken");
+        User user1 = new User("bobby", "bob", "johnson", "bob@gmail.com", "passwordbob", "bobtoken");
+        User user2 = new User("janny", "jan", "stevenson", "jsteven@gmail.com", "passwordjan", "jantoken");
         assertNull(user1.getId());
         assertNull(user2.getId());
         this.repository.save(user1);

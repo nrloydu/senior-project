@@ -20,7 +20,7 @@ public class PollRepositoryTest {
 
     @Before
     public void setUp() throws Exception {
-        User user1 = new User("bob", "jackie", "bjackie@gmail.com", "bobpassword", "bobtoken");
+        User user1 = new User("bobby", "bob", "jackie", "bjackie@gmail.com", "bobpassword", "bobtoken");
         //Poll poll1 = new Poll(user1.getId(), "on Monday", "shall we go to the meeting?", 1556662425, ["yes","no"]);
     }
 }
