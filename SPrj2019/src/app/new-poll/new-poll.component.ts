@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
+import { User } from '../_models';
+import { UserService, AuthenticationService } from '../_services'
+import { Subscription } from 'rxjs';
+
 
 @Component({
   templateUrl: './new-poll.component.html'
@@ -15,8 +19,17 @@ export class NewPollComponent implements OnInit {
   // Change this array type to new poll component
   opArr: Array<string>;
   options: FormArray;
+  currentUser: User;
+  currentUserSubscription: Subscription;
+  users: User[] = [];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService,
+              private authenticationService: AuthenticationService ) {
+                this.currentUserSubscription = this.authenticationService.currentUser.subscribe(
+                  users => {this.currentUser = users;
+              });
+              }
 
   ngOnInit() {
     this.pollForm = this.formBuilder.group ({
@@ -57,7 +70,7 @@ export class NewPollComponent implements OnInit {
   }
 
   addUser() {
-
+    
   }
 
   removeUser(){
@@ -67,5 +80,9 @@ export class NewPollComponent implements OnInit {
     console.log(this.pollForm.value);
   }
 
-  
+  private loadAllUsers() {
+    this.userService.getAll().pipe(first()).subscribe(users => {
+        this.users = users;
+    });
+  }
 }
