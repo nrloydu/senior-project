@@ -12,11 +12,7 @@ import com.seniorproject.dto.Poll;
 @Repository
 public interface PollRepository extends MongoRepository<Poll, String> {
     public Optional<Poll> findById(String id);
-    
-    @Query("{ownerId: '?0'}")
     public List<Poll> findByOwnerId(String ownerId);
-
-
 
     @Query("{voterIds: '?0'}")
     public List<Poll> findByVoterIds(String voterId);

@@ -41,8 +41,8 @@ public class PollController {
 
     @RequestMapping(method = RequestMethod.GET, value = "/getPollsForUser/{userId}")
     @ResponseBody
-    List<Poll> getPollsByVoter(@PathVariable String voterId) {
-        return repository.findByVoterIds(voterId);
+    List<Poll> getPollsByVoter(@PathVariable String userId) {
+        return repository.findByVoterIds(userId);
     }
 
     @RequestMapping(method = RequestMethod.POST)
