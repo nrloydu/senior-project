@@ -39,11 +39,11 @@ public class PollController {
         return repository.findByOwnerId(ownerId);
     }
 
-    /*@RequestMapping(method = RequestMethod.GET, value = "/getPollsForUser/{userId}")
+    @RequestMapping(method = RequestMethod.GET, value = "/getPollsForUser/{userId}")
     @ResponseBody
     List<Poll> getPollsByVoter(@PathVariable String voterId) {
-        return repository.findByVoterIdInVoterIds(voterId);
-    }*/
+        return repository.findByVoterIds(voterId);
+    }
 
     @RequestMapping(method = RequestMethod.POST)
     @ResponseBody
