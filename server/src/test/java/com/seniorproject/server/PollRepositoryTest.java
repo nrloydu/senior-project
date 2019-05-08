@@ -1,6 +1,6 @@
 package com.seniorproject.server;
 
-import com.seniorproject.dto.Poll;
+//import com.seniorproject.dto.Poll;
 import com.seniorproject.dto.User;
 import com.seniorproject.server.repository.PollRepository;
 

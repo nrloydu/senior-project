@@ -43,7 +43,7 @@ public class UserRepositoryTest {
         assertNotNull(userA);
         Optional<User> userB = repository.findById("1");
         assertNotNull(userB);
-        User userC = repository.findByEmail("jan@hotmail.com");
+        User userC = repository.findByEmail("jsteven@gmail.com");
         assertNotNull(userC);
         List<User> users = repository.findAll();
         assertEquals(users.size(), 2);
