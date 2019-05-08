@@ -20,6 +20,16 @@
             "mainClass": "com.seniorproject.server.DemoApplication",
             "projectName": "server",
             "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-ServerApplication<server>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.seniorproject.server.ServerApplication",
+            "projectName": "server",
+            "args": ""
         }
     ]
 }
