@@ -4,6 +4,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
@@ -17,16 +20,21 @@ public class User {
 
     private String firstName;
     private String lastName;
+    private String fullName;
     private String email;
     private String password;
     private String token;
+    private List<String> groupList;
+
 
     public User(String firstName, String lastName, String email, String password, String token ) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.fullName = firstName + " " + lastName;
         this.email = email;
         this.password = password;
         this.token = token;
+        this.groupList = new ArrayList<String>();
     }
 
     public String getId() {
@@ -53,6 +61,14 @@ public class User {
         this.lastName = name;
     }
 
+    public void setFullname(String name) {
+        this.fullName = name;
+    }
+
+    public String getFullname() {
+        return fullName;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -75,5 +91,9 @@ public class User {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public void addGroupToList(String groupId){
+        this.groupList.add(groupId);
     }
 }

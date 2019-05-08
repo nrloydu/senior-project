@@ -52,10 +52,22 @@ public class UserController {
         @ApiResponse(code=200,message="User found",response=User.class),
         @ApiResponse(code=404,message="User not found")
     })*/
-    @RequestMapping(method = RequestMethod.GET, value = "/getUserByName/{name}")
+    @RequestMapping(method = RequestMethod.GET, value = "/getUserByFirstName/{name}")
     @ResponseBody
-    User getUserByName(@PathVariable String name) {
+    User getUserByFirstName(@PathVariable String name) {
         return repository.findByFirstName(name);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getUserByLastName/{name}")
+    @ResponseBody
+    User getUserByLastName(@PathVariable String name) {
+        return repository.findByLastName(name);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/getUserByFullName/{name}")
+    @ResponseBody
+    User getUserByFullName(@PathVariable String name) {
+        return repository.findByFullName(name);
     }
 
     /*@ApiOperation(value="gets a user by email address", response=User.class)

@@ -13,6 +13,8 @@ import com.seniorproject.dto.User;
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
     public Optional<User> findById(String id);
-    public User findByFirstName(String name);
+    public User findByFirstName(String firstName);
+    public User findByLastName(String lastName);
+    public User findByFullName(String fullname);
     public User findByEmail(String email);
 }
