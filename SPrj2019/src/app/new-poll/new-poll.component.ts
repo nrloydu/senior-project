@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { User } from '../_models';
 import { AlertService, UserService, AuthenticationService, PollService } from '../_services'
 import { Subscription } from 'rxjs';
+import { ExitStatus } from 'typescript';
 //import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 
@@ -43,7 +44,7 @@ export class NewPollComponent implements OnInit {
       options: this.formBuilder.array(
         [this.initOption()]
       ),
-      users: ['', Validators.required]
+      sendUser: ['', Validators.required]
     });
     this.loadAllUsers();
   }
@@ -114,11 +115,13 @@ export class NewPollComponent implements OnInit {
     for(i = 0, i; this.users.length; i++){
       console.log("Value of first value: " + this.users[i].firstName);
       console.log("Value of passed in value: " + name);
-      if(this.users[i].firstName = name)
+      if(this.users[i].firstName == name)
       {
-        this.pollUsers.push(this.users[i]); 
+        //this.pollUsers.push(this.users[i]); 
+        this.pollForm.controls['sendUser'].setValue(name);
         this.alertService.success("User added.", true);
         console.log(this.users[i]);
+        break;
       }
       else {
         console.log("User not found");
