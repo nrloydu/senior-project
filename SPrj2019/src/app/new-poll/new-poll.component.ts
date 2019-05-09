@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { User } from '../_models';
 import { UserService, AuthenticationService } from '../_services'
 import { Subscription } from 'rxjs';
+//import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class NewPollComponent implements OnInit {
   currentUser: User;
   currentUserSubscription: Subscription;
   users: User[] = [];
+  pollUsers: User[] = [];
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
@@ -38,6 +40,7 @@ export class NewPollComponent implements OnInit {
         [this.initOption()]
       )
     });
+    this.loadAllUsers();
   }
 
   onSubmit(form: FormGroup) {
@@ -69,8 +72,8 @@ export class NewPollComponent implements OnInit {
     this.options.removeAt(this.options.length - 1);
   }
 
-  addUser() {
-    
+  addUser(id: number) {
+    //arrLen: Number = this.users.push(this.userService.getById(id));
   }
 
   removeUser(){
@@ -80,9 +83,28 @@ export class NewPollComponent implements OnInit {
     console.log(this.pollForm.value);
   }
 
+  findUser(name: string){
+    var i:number;
+    console.log("I'm in findUser");
+    console.log(this.users.length);
+    for(i = 0, i; this.users.length; i++){
+      console.log("Value of first value: " + this.users[i].firstName);
+      console.log("Value of passed in value: " + name);
+      if(this.users[i].firstName = name)
+      {
+        this.pollUsers.push(this.users[i]); 
+        console.log(this.users[i]);
+      }
+      else {
+        console.log("User not found");
+      }
+    }
+
+  }
+
   private loadAllUsers() {
-    this.userService.getAll().pipe(first()).subscribe(users => {
-        this.users = users;
+    this.userService.getAll().pipe(first()).subscribe(allUsers => {
+        this.users = allUsers;
     });
   }
 }

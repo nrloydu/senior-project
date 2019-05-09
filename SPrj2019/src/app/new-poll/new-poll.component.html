@@ -28,8 +28,12 @@
       <label>Expiration Date: </label>
       <p><input type="datetime-local" id='expDateBox'></p>
       <label>Add User or Group: </label>
-      <p><input type="text" id='userBox'></p>
-      <p><button (click)="addUser()" class="btn btn-default">+ Add User</button></p>
+      <div>
+        <pre>
+        <p><input type="text" #userInput></p>
+        <p><button type="submit" (click)="findUser(userInput.value)" class="btn btn-default">+ Add User</button></p>
+      </pre>
+      </div>
       <label>Visibility Limit: </label>
       <p><input type="text" placeholder="e.g. 72 hours" id='visBox'></p>
     </div>
