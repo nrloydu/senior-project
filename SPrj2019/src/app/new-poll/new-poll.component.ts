@@ -86,7 +86,10 @@ export class NewPollComponent implements OnInit {
   findUser(name: string){
     var i:number;
     console.log("I'm in findUser");
+    console.log(this.users.length);
     for(i = 0, i; this.users.length; i++){
+      console.log("Value of first value: " + this.users[i].firstName);
+      console.log("Value of passed in value: " + name);
       if(this.users[i].firstName == name)
       {
         this.pollUsers.push(this.users[i]); 
