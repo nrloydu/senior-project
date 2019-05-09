@@ -46,17 +46,25 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        console.log("BEFORE LOADAUSER ONINIT->>>> poll 0 is: " );
+        console.log("INSIDE ONINIT->>>> users 0 is: " + this.users.length);
+
         this.loadAllUsers();
+        console.log("AFTER USER->>>> poll 0 is: " );
+
         this.loadAllPolls();
-        console.log(this.poll[0].pollTitle);
+        console.log("outside of pollservicegwheghtjy")
+
+        console.log("INSIDE ONINIT->>>> poll 0 is: " + this.poll[1].pollTitle);
+        console.log("outside of pollservicegwheghtjy")
+
         this.displayActivePolls();
     }
 
     displayActivePolls() {
         var i:number;
-      
+
         for(i = 0; i < this.poll.length; i++){
-            console.log("HERE");
             if(this.poll[i].users == this.currentUser.firstName) {
                 this.displayPoll = true;
                 this.currentPoll = this.poll[i];
@@ -86,7 +94,8 @@ export class HomeComponent implements OnInit, OnDestroy {
     private loadAllPolls() {
         this.pollService.getAll().pipe(first()).subscribe(poll => {
             this.poll = poll;
-        })
+            console.log("INSIDE LOADALLPOLLS ->>>" + this.poll[3].pollTitle +this.poll.length);
+        });
         // Check user field if current user load poll
         //if (this.currentUser.firstName = poll.user.firstName){
         // }

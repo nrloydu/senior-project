@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
-import { User } from '../_models';
+import { User, Poll } from '../_models';
 import { AlertService, UserService, AuthenticationService, PollService } from '../_services'
 import { Subscription } from 'rxjs';
 import { ExitStatus } from 'typescript';
@@ -41,10 +41,12 @@ export class NewPollComponent implements OnInit {
   ngOnInit() {
     this.pollForm = this.formBuilder.group ({
       pollTitle: ['', Validators.required],
-      options: this.formBuilder.array(
+      deadline: ['', Validators.required],
+      option: this.formBuilder.array(
         [this.initOption()]
       ),
-      sendUser: ['', Validators.required]
+      sendUser: ['', Validators.required],
+      visLimit: ['', Validators.required]
     });
     this.loadAllUsers();
   }
@@ -56,7 +58,7 @@ export class NewPollComponent implements OnInit {
     if(this.pollForm.invalid) {
       return;
     }
-
+    
     this.pollService.create(this.pollForm.value).pipe(first())
       .subscribe(
         data => {
@@ -68,14 +70,7 @@ export class NewPollComponent implements OnInit {
           this.alertService.error(error);
         }
       );
-<<<<<<< HEAD
-    console.log("Submitted!!!!")
-    console.log(this.pollForm.controls['pollTitle'].value);
-
-=======
     console.log("Submitted!!!!");
->>>>>>> afdb22aa288139d22757fc09f5c920fd2b23d767
-
   }
 
   initOption() {

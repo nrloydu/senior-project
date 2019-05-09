@@ -5,7 +5,19 @@
 <div class="container">
     <div style="float: left; width: 50%;">
         <h3>Active Polls:</h3>
-        <h4>""</h4>
+        <h5>{{poll[6].pollTitle}}</h5>
+
+        <div *ngFor="let option of poll[6].option">
+                {{poll[6].o}}
+        </div>
+       
+        {{poll[6].sendUser}}
+        
+               <ul>
+                <li *ngFor="let poll of poll">
+                        {{poll.pollTitle}}
+                    </li>
+                </ul>
     </div>
     <div style="float: right; width: 50%;">
         <h3>All registered users:</h3>
@@ -15,19 +27,20 @@
                 - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
             </li>
         </ul>
+ 
     </div>
 </div>
- <!--
+<!--
 <div style="background-color:lightgray" *ngFor="let poll of Poll">
     <div *ngIf="displayPoll==true">
-        <h3>{{poll.title}}</h3>
-        <h5>{{poll.deadline}}</h5>
+        <h3>{currentPoll.title}</h3>
+        <h5>{currentPoll.deadline}</h5>
         <form [formGroup]="form" (ngSubmit)="submit()">
             <label formArrayName="optionArr">
                 <ng-container *ngFor="let option of form.controls.optionArr.controls; let i = index">
                     <input type="checkbox" [formControlName]="i">
                     {{optionArr[i].text}}
-                    <br/>
+                    <br />
                 </ng-container>
             </label>
             <div *ngIf="!form.valid">At least one option must be selected to vote!</div>
@@ -35,4 +48,5 @@
         <p></p>
         <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-</div> -->
+</div>
+-->
