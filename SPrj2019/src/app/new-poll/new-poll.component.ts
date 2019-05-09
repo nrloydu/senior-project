@@ -68,8 +68,13 @@ export class NewPollComponent implements OnInit {
           this.alertService.error(error);
         }
       );
+<<<<<<< HEAD
     console.log("Submitted!!!!")
+    console.log(this.pollForm.controls['pollTitle'].value);
 
+=======
+    console.log("Submitted!!!!");
+>>>>>>> afdb22aa288139d22757fc09f5c920fd2b23d767
 
   }
 
@@ -121,6 +126,7 @@ export class NewPollComponent implements OnInit {
         this.pollForm.controls['sendUser'].setValue(name);
         this.alertService.success("User added.", true);
         console.log(this.users[i]);
+        console.log(this.pollForm.controls['sendUser'].value);
         break;
       }
       else {

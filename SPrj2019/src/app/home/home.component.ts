@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
             optionArr: new FormArray([], minSelectedCheckboxes(1))
         });
 
-        this.addCheckboxes();
+        
     }
 
     private addCheckboxes() {
@@ -48,24 +48,22 @@ export class HomeComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.loadAllUsers();
         this.loadAllPolls();
+        console.log(this.poll[0].pollTitle);
         this.displayActivePolls();
     }
 
     displayActivePolls() {
-        //for loop checks the user field of a poll
-       /* var i : number;
-        if(this.poll[0].users = this.currentUser.firstName)
-        {
-            //display
-        }*/
         var i:number;
+      
         for(i = 0; i < this.poll.length; i++){
+            console.log("HERE");
             if(this.poll[i].users == this.currentUser.firstName) {
                 this.displayPoll = true;
                 this.currentPoll = this.poll[i];
                 this.optionArr = this.currentPoll.option;
             }
         }
+        this.addCheckboxes();
     }
 
     ngOnDestroy() {
