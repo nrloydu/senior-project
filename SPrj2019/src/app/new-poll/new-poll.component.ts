@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { User } from '../_models';
-import { UserService, AuthenticationService } from '../_services'
+import { AlertService, UserService, AuthenticationService, PollService } from '../_services'
 import { Subscription } from 'rxjs';
 //import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
@@ -27,7 +27,9 @@ export class NewPollComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,
               private userService: UserService,
-              private authenticationService: AuthenticationService ) {
+              private authenticationService: AuthenticationService,
+              private alertService: AlertService,
+              private pollService: PollService ) {
                 this.currentUserSubscription = this.authenticationService.currentUser.subscribe(
                   users => {this.currentUser = users;
               });
@@ -46,6 +48,16 @@ export class NewPollComponent implements OnInit {
   onSubmit(form: FormGroup) {
     console.log('Valid?', form.valid);
     console.log('Title', form.value.pollTitle);
+
+    this.submitted = true;
+
+    if(this.pollForm.invalid) {
+      return;
+    }
+
+    this.pollService.create(this.pollForm.value);
+
+
   }
 
   initOption() {
@@ -90,9 +102,10 @@ export class NewPollComponent implements OnInit {
     for(i = 0, i; this.users.length; i++){
       console.log("Value of first value: " + this.users[i].firstName);
       console.log("Value of passed in value: " + name);
-      if(this.users[i].firstName == name)
+      if(this.users[i].firstName = name)
       {
         this.pollUsers.push(this.users[i]); 
+        this.alertService.success("User added.", true);
         console.log(this.users[i]);
       }
       else {
