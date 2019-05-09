@@ -1,6 +1,6 @@
 <h2>Create New Poll</h2>
 <section class="CreatePoll" *ngIf="pollForm">
-  <form [formGroup]="pollForm" (ngSubmit)="onSubmit(myForm)">
+  <form [formGroup]="pollForm">
 
     <!-- Title -->
     <div class="form-group">
@@ -31,7 +31,7 @@
       <div>
         <pre>
         <p><input type="text" #userInput></p>
-        <p><button type="submit" (click)="findUser(userInput.value)" class="btn btn-default">+ Add User</button></p>
+        <p><button type="default" (click)="findUser(userInput.value)" class="btn btn-default">+ Add User</button></p>
       </pre>
       </div>
       <label>Visibility Limit: </label>
@@ -43,7 +43,7 @@
     <p></p>
 
     <div class="options">
-      <button [disabled]="loading" type="submit" class="btn btn-primary">Submit</button>
+      <button [disabled]="loading" type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
       <img *ngIf="loading" class="pl-3"
         src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
     </div>

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import {RouterModule, Routes} from "@angular/router";
-import {ChartsModule} from 'ng2-Charts';
+//import {ChartsModule} from 'ng2-Charts';
 
 import { fakeBackendProvider } from './_helpers';
 import { AppService } from './app.service';
@@ -36,7 +36,7 @@ const routeConfig: Routes = [
       BrowserModule,
       RouterModule.forRoot(routeConfig),
       ReactiveFormsModule,
-      ChartsModule,
+      //ChartsModule,
       HttpClientModule,
       routing
   ],
