@@ -62,6 +62,7 @@ export class NewPollComponent implements OnInit {
           this.router.navigate(['/']);
         },
         error => {
+          console.log("Cannot submit");
           this.alertService.error(error);
         }
       );
