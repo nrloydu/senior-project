@@ -9,22 +9,22 @@ export class PollService {
     constructor(private http: HttpClient) { }
 
     getAll() {
-        return this.http.get<Poll[]>(`/poll`);
+        return this.http.get<Poll[]>(`/polls`);
     }
 
     getById(id: number) {
-        return this.http.get(`/poll/${id}`);
+        return this.http.get(`/polls/${id}`);
     }
 
     create(poll: Poll) {
-        return this.http.post(`/poll/new-poll`, poll);
+        return this.http.post(`/polls/new-poll`, poll);
     }
 
     update(poll: Poll) {
-        return this.http.put(`/poll/${poll.id}`, poll);
+        return this.http.put(`/polls/${poll.id}`, poll);
     }
 
     delete(id: number) {
-        return this.http.delete(`/poll/${id}`);
+        return this.http.delete(`/polls/${id}`);
     }
 }

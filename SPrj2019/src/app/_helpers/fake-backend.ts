@@ -15,6 +15,9 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // array in local storage for registered users
         let users: any[] = JSON.parse(localStorage.getItem('users')) || [];
 
+        // array in local storage for polls
+        let polls: any[] = JSON.parse(localStorage.getItem('polls')) || [];
+
         // wrap in delayed observable to simulate server api call
         return of(null).pipe(mergeMap(() => {
 
@@ -55,6 +58,17 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 }
             }
 
+            // get polls
+            if (request.url.endsWith('/polls') && request.method === 'GET') {
+                // check for fake auth token in header and return polls if valid, this security is implemented server side in a real application
+                if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                    return of(new HttpResponse({ status: 200, body: polls }));
+                } else {
+                    // return 401 not authorised if token is null or invalid
+                    return throwError({ status: 401, error: { message: 'Unauthorised' } });
+                }
+            }
+
             // get user by id
             if (request.url.match(/\/users\/\d+$/) && request.method === 'GET') {
                 // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
@@ -66,6 +80,23 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                     let user = matchedUsers.length ? matchedUsers[0] : null;
 
                     return of(new HttpResponse({ status: 200, body: user }));
+                } else {
+                    // return 401 not authorised if token is null or invalid
+                    return throwError({ status: 401, error: { message: 'Unauthorised' } });
+                }
+            }
+
+            // get poll by id
+            if (request.url.match(/\/polls\/\d+$/) && request.method === 'GET') {
+                // check for fake auth token in header and return poll if valid, this security is implemented server side in a real application
+                if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                    // find poll by id in polls array
+                    let urlParts = request.url.split('/');
+                    let id = parseInt(urlParts[urlParts.length - 1]);
+                    let matchedPolls = polls.filter(poll => { return poll.id === id; });
+                    let poll = matchedPolls.length ? matchedPolls[0] : null;
+
+                    return of(new HttpResponse({ status: 200, body: poll }));
                 } else {
                     // return 401 not authorised if token is null or invalid
                     return throwError({ status: 401, error: { message: 'Unauthorised' } });
@@ -92,6 +123,20 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                 return of(new HttpResponse({ status: 200 }));
             }
 
+            // create poll
+            if (request.url.endsWith('/polls/new-poll') && request.method === 'POST') {
+                // get new poll object from post body
+                let newPoll = request.body;
+
+                // save new user
+                newPoll.id = polls.length + 1;
+                polls.push(newPoll);
+                localStorage.setItem('polls', JSON.stringify(polls));
+
+                // respond 200 OK
+                return of(new HttpResponse({ status: 200 }));
+            }
+
             // delete user
             if (request.url.match(/\/users\/\d+$/) && request.method === 'DELETE') {
                 // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
@@ -105,6 +150,31 @@ export class FakeBackendInterceptor implements HttpInterceptor {
                             // delete user
                             users.splice(i, 1);
                             localStorage.setItem('users', JSON.stringify(users));
+                            break;
+                        }
+                    }
+
+                    // respond 200 OK
+                    return of(new HttpResponse({ status: 200 }));
+                } else {
+                    // return 401 not authorised if token is null or invalid
+                    return throwError({ status: 401, error: { message: 'Unauthorised' } });
+                }
+            }
+
+            // delete poll
+            if (request.url.match(/\/polls\/\d+$/) && request.method === 'DELETE') {
+                // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
+                if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+                    // find poll by id in polls array
+                    let urlParts = request.url.split('/');
+                    let id = parseInt(urlParts[urlParts.length - 1]);
+                    for (let i = 0; i < polls.length; i++) {
+                        let poll = polls[i];
+                        if (poll.id === id) {
+                            // delete poll
+                            polls.splice(i, 1);
+                            localStorage.setItem('polls', JSON.stringify(polls));
                             break;
                         }
                     }
