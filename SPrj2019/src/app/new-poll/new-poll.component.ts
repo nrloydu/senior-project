@@ -69,6 +69,7 @@ export class NewPollComponent implements OnInit {
         }
       );
     console.log("Submitted!!!!")
+    console.log(this.pollForm.controls['pollTitle'].value);
 
 
   }
