@@ -56,6 +56,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     displayActivePolls() {
         //for loop checks the user field of a poll
         
+        
     }
 
     ngOnDestroy() {

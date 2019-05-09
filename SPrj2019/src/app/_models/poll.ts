@@ -4,7 +4,7 @@ export class Poll {
     pollTitle: string;
     deadline: number;
     option: Option[] = [];
-    users: number[] = [];
+    users: string;
 }
 
 export class Option {
