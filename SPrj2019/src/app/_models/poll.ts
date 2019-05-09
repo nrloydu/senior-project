@@ -1,11 +1,10 @@
 export class Poll {
     id: number;
     ownerId: number;
-    title: string;
-    question: string;
+    pollTitle: string;
     deadline: number;
     option: Option[] = [];
-    voterIds: number[] = [];
+    users: number[] = [];
 }
 
 export class Option {

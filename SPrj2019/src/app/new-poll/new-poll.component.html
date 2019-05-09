@@ -30,7 +30,7 @@
       <label>Add User or Group: </label>
       <div>
         <pre>
-        <p><input type="text" #userInput></p>
+        <p><input type="text" formControlName="users" #userInput></p>
         <p><button type="default" (click)="findUser(userInput.value)" class="btn btn-default">+ Add User</button></p>
       </pre>
       </div>
