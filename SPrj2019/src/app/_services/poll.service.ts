@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Poll } from '../_models/poll';
+import { Poll, Option } from '../_models/poll';
 import { User } from '../_models';
 
 @Injectable({ providedIn: 'root' })
