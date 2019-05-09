@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { first } from 'rxjs/operators';
 
-import { User, Poll } from '../_models';
+import { User, Poll, Option } from '../_models';
 import { UserService, AuthenticationService, PollService } from '../_services';
 import { FormBuilder, FormGroup, FormArray, FormControl, ValidatorFn } from '@angular/forms';
 
@@ -14,11 +14,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     users: User[] = [];
     poll: Poll[] = [];
     form: FormGroup;
-    optionArr = [
-        { id: 1, name: 'option 1' },
-        { id: 2, name: 'option 2' },
-        { id: 3, name: 'option 3' },
-    ];
+    optionArr: Option[];
+    displayPoll: Boolean = false;
+    currentPoll: Poll;
 
     constructor(
         private authenticationService: AuthenticationService,
@@ -60,6 +58,14 @@ export class HomeComponent implements OnInit, OnDestroy {
         {
             //display
         }*/
+        var i:number;
+        for(i = 0; i < this.poll.length; i++){
+            if(this.poll[i].users == this.currentUser.firstName) {
+                this.displayPoll = true;
+                this.currentPoll = this.poll[i];
+                this.optionArr = this.currentPoll.option;
+            }
+        }
     }
 
     ngOnDestroy() {

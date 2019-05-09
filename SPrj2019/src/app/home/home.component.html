@@ -2,10 +2,10 @@
 <p style="text-align:center">You're logged into your polling application!
     <br />Begin by creating a new poll or reviewing an inactive poll.</p>
 
-     <!--
 <div class="container">
     <div style="float: left; width: 50%;">
         <h3>Active Polls:</h3>
+        <h4>""</h4>
     </div>
     <div style="float: right; width: 50%;">
         <h3>All registered users:</h3>
@@ -17,27 +17,23 @@
         </ul>
     </div>
 </div>
--->
 
 <div style="background-color:lightgray" *ngFor="let poll of Poll">
     <!--Placeholders-->
-    <h3>Title Goes Here</h3>
-    <h4>Question goes here</h4>
-    <h5>Deadline: </h5>
-    <!--<h3>{poll.title}</h3>
-        <h4>{poll.question}</h4>
-        <h5>{poll.deadline}</h5>
-      -->
-    <form [formGroup]="form" (ngSubmit)="submit()">
-        <label formArrayName="optionArr">
-            <ng-container *ngFor="let option of form.controls.optionArr.controls; let i = index">
-                <input type="checkbox" [formControlName]="i">
-                {{optionArr[i].name}}
-                <br />
-            </ng-container>
-        </label>
-        <div *ngIf="!form.valid">At least one option must be selected to vote!</div>
-    </form>
+    <div *ngIf="displayPoll==true">
+        <h3>{currentPoll.title}</h3>
+        <h5>{currentPoll.deadline}</h5>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <label formArrayName="optionArr">
+                <ng-container *ngFor="let option of form.controls.optionArr.controls; let i = index">
+                    <input type="checkbox" [formControlName]="i">
+                    {{optionArr[i].text}}
+                    <br />
+                </ng-container>
+            </label>
+            <div *ngIf="!form.valid">At least one option must be selected to vote!</div>
+        </form>
+        <p></p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
 </div>
-<p></p>
-<button type="submit" class="btn btn-primary">Submit</button>
