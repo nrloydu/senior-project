@@ -1,5 +1,6 @@
 import { Component, OnInit, SystemJsNgModuleLoader } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 import { User } from '../_models';
@@ -29,7 +30,8 @@ export class NewPollComponent implements OnInit {
               private userService: UserService,
               private authenticationService: AuthenticationService,
               private alertService: AlertService,
-              private pollService: PollService ) {
+              private pollService: PollService,
+              private router: Router ) {
                 this.currentUserSubscription = this.authenticationService.currentUser.subscribe(
                   users => {this.currentUser = users;
               });
@@ -45,9 +47,7 @@ export class NewPollComponent implements OnInit {
     this.loadAllUsers();
   }
 
-  onSubmit(form: FormGroup) {
-    console.log('Valid?', form.valid);
-    console.log('Title', form.value.pollTitle);
+  onSubmit() {
 
     this.submitted = true;
 
@@ -55,7 +55,17 @@ export class NewPollComponent implements OnInit {
       return;
     }
 
-    this.pollService.create(this.pollForm.value);
+    this.pollService.create(this.pollForm.value).pipe(first())
+      .subscribe(
+        data => {
+          this.alertService.success("Form submitted", true);
+          this.router.navigate(['/']);
+        },
+        error => {
+          this.alertService.error(error);
+        }
+      );
+    console.log("Submitted!!!!")
 
 
   }
