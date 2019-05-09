@@ -21,14 +21,14 @@
 <div style="background-color:lightgray" *ngFor="let poll of Poll">
     <!--Placeholders-->
     <div *ngIf="displayPoll==true">
-        <h3>{currentPoll.title}</h3>
-        <h5>{currentPoll.deadline}</h5>
+        <h3>{{poll.title}}</h3>
+        <h5>{{poll.deadline}}</h5>
         <form [formGroup]="form" (ngSubmit)="submit()">
             <label formArrayName="optionArr">
                 <ng-container *ngFor="let option of form.controls.optionArr.controls; let i = index">
                     <input type="checkbox" [formControlName]="i">
                     {{optionArr[i].text}}
-                    <br />
+                    <br/>
                 </ng-container>
             </label>
             <div *ngIf="!form.valid">At least one option must be selected to vote!</div>
