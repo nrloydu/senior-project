@@ -42,7 +42,8 @@ export class NewPollComponent implements OnInit {
       pollTitle: ['', Validators.required],
       options: this.formBuilder.array(
         [this.initOption()]
-      )
+      ),
+      users: ['', Validators.required]
     });
     this.loadAllUsers();
   }

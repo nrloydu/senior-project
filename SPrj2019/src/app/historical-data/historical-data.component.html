@@ -2,27 +2,3 @@
 <div>
   <h3>Inactive Polls</h3>
 </div>
-<div [innerHTML]="theObject | json">
-</div>
-<div style="background-color:lightgray">
-  <!--Placeholders-->
-  <h3>Title Goes Here</h3>
-  <h4>Question goes here</h4>
-  <h5>Deadline: </h5>
-  <!--<h3>{poll.title}</h3>
-  <h4>{poll.question}</h4>
-  <h5>{poll.deadline}</h5>
--->
-<form [formGroup]="form" (ngSubmit)="submit()">
-  <label formArrayName="optionArr">
-    <ng-container *ngFor="let option of form.controls.optionArr.controls; let i = index">
-      <input type="checkbox" [formControlName]="i">
-      {{optionArr[i].name}}
-      <br/>
-    </ng-container>
-  </label>
-  <div *ngIf="!form.valid">At least one option must be selected to vote!</div>
-</form>
-</div>
-<p></p>
-<button type="submit" class="btn btn-primary">Submit</button>
